@@ -1,6 +1,6 @@
 create table users (
     id integer PRIMARY KEY AUTOINCREMENT ,
-    name varchar(128),
+    username varchar(128),
     email varchar(128),
     password varchar(128),
     register_date datetime
@@ -17,7 +17,7 @@ create table shares (
        REFERENCES users (id) 
 );
   
-insert into users (name, email, password,register_date) values 
+insert into users (username, email, password,register_date) values 
   ('Richard', 'richard@richard.nl', 'Richard!!',CURRENT_TIMESTAMP)
 ;
 

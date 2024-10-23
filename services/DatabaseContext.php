@@ -52,7 +52,7 @@ class DatabaseContext {
 
     public function createUser(string $username, string $email, string $password): ?User {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "insert into users(name,password, email) values ('$username', '$password', '$email')";
+        $sql = "insert into users(username,password, email,register_date) values ('$username', '$password', '$email',CURRENT_TIMESTAMP)";
         $this->handler->exec($sql);
         return new User ($username, $email);
     }

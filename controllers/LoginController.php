@@ -27,7 +27,8 @@ class LoginController {
                 print "<h1>Alles is stuk!</h1>";
             }
         } else {
-            return file_get_contents('views/login.html');
+            $login = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/login.html');
+            return $login;
         }
     }
 
