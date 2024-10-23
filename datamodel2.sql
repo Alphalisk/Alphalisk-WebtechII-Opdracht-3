@@ -22,7 +22,9 @@ insert into users (name, email, password,register_date) values
 ;
 
 insert into shares (user_id, title, body, link, create_date) values 
-  ('1', 'Onderwerp', 'Hallo iedereen','#',CURRENT_TIMESTAMP)
+  ('1', 'Onderwerp', 'Hallo iedereen','https://d3goj5urzzuh84.cloudfront.net/feed/_1536x864_crop_center-center_82_line/PATCHES-2.jpg',CURRENT_TIMESTAMP),
+  ('1', 'Gedoe', 'Huh?','https://d3goj5urzzuh84.cloudfront.net/feed/_1536x864_crop_center-center_82_line/PATCHES-2.jpg',CURRENT_TIMESTAMP),
+  ('1', 'Dus...', 'Waar ben ik?','https://d3goj5urzzuh84.cloudfront.net/feed/_1536x864_crop_center-center_82_line/PATCHES-2.jpg',CURRENT_TIMESTAMP)
 ;
 
 

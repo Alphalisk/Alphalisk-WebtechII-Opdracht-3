@@ -7,12 +7,14 @@ class Blog implements \JsonSerializable
     public function __construct (
         private String $image,
         private String $titel,
-        private String $datum
+        private String $body,
+        private String $create_date,
+        private String $id
     ){}
 
     public function toHtml() {
         $html = file_get_contents('views/blog.partial.html');
-        foreach(['image','datum','titel'] as $element) {
+        foreach(['image','body','titel','create_date','id'] as $element) {
             $html = str_replace('{{'.$element.'}}', $this->$element, $html);
         }
         return $html;
@@ -22,8 +24,10 @@ class Blog implements \JsonSerializable
     {
         return [
             'titel'=>$this->titel,
-            'datum'=>$this->datum,
-            'image'=>$this->image
+            'body'=>$this->body,
+            'image'=>$this->image,
+            'create_date'=>$this->create_date,
+            'id'=>$this->id
         ];
     }
 }

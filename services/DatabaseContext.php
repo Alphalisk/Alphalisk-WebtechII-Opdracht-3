@@ -21,12 +21,16 @@ class DatabaseContext {
     public function getBlogs(): array
     {
         $returnvalue = [];
-        $results = $this->handler->query("select * from blogs");
+        $results = $this->handler->query("select * from shares");
         while ($row = $results->fetchArray()) {
             $returnvalue[] = new Blog(
-                $row['image'],
-                $row['titel'],
-                $row['datum']
+                
+                $row['link'],
+                $row['body'],
+                $row['title'],
+                $row['create_date'],
+                $row['id']
+                
             );
         }
 

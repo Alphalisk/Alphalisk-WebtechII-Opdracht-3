@@ -1,9 +1,13 @@
 <!-- partial:index.partial.html -->
 <div class="card">
-    <img src="{{image}}" class="card__image" alt="brown couch" />
     <div class="card__content">
-        <time datetime="{{datum}}" class="card__date">{{datum}}</time>
-        <span class="card__title">{{titel}}</span>
+        <h3>Share {{id}}</h3>
+        <time datetime="{{datum}}" class="card__date">{{create_date}}</time>
+        <br>
+    </div>
+    <div class="card__content">
+        <p>{{body}}</p>
+        <button style="background-color:rgb(229, 235, 236);"><a href="{{image}}" style="color:black;" class="card__image" alt="brown couch">Go to website</a></button>
     </div>
 </div>
 <!-- partial -->
