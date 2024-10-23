@@ -5,7 +5,7 @@ namespace controllers;
 use http\Request;
 use services\DatabaseContext;
 
-class EchoController
+class HomeController
 {
 
     public function __construct(

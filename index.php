@@ -5,7 +5,7 @@ declare(strict_types = 1);
 include 'includes/class-autoload.inc.php';
 
 $routes = [
-  '/' => controllers\BlogController::class,
+  '/' => controllers\HomeController::class,
   '/register' => controllers\RegisterController::class,
   '/login'=> controllers\LoginController::class,
   '/blog' => controllers\BlogController::class,
