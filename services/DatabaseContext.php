@@ -57,8 +57,8 @@ class DatabaseContext {
         return new User ($username, $email);
     }
 
-    public function createShare(int $user_id,string $title, string $body, string $link) {
-        $sql = "insert into shares(user_id, title,body, link) values ($user_id,$title, $body, $link)";
+    public function createShare(string $user_id,string $title, string $body, string $link) {
+        $sql = "insert into shares(user_id, title,body, link) values ('$user_id','$title', '$body', '$link')";
         $this->handler->exec($sql);
         return ;
     }

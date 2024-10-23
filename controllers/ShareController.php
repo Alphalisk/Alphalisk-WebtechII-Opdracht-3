@@ -9,7 +9,7 @@ class ShareController {
 
     public function __construct(
         private readonly Request $request,
-        private DatabaseContext $ctx)
+        private DatabaseContext $databaseContext)
     { }
 
 
@@ -17,12 +17,14 @@ class ShareController {
         
 
         if ($this->request->getRequestMethod() == 'POST') {
-
+            
             $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['title', 'body', 'link','user_id']));                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
-            //     $this->request->getPostValue('title'),
-            //     $this->request->getPostValue('body'),
-            //     $this->request->getPostValue('link')
-            // );
+            // $a = $this->request->getPostValue('title');
+            // var_dump($a);
+            // $share = $this->databaseContext->createShare(1,'a','b','c');
+            // //     $this->request->getPostValue('body'),
+            // //     $this->request->getPostValue('link')
+            // // );
 
             if ($share) {
                 return '<h1>aangemaakt hoor</h1>';
