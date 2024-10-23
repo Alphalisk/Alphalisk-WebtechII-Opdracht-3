@@ -29,7 +29,8 @@ class DatabaseContext {
                 $row['body'],
                 $row['title'],
                 $row['create_date'],
-                $row['id']
+                $row['id'],
+                $row['user_id']
                 
             );
         }
@@ -51,8 +52,14 @@ class DatabaseContext {
 
     public function createUser(string $username, string $email, string $password): ?User {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "insert into users(username,password, email) values ('$username', '$password', '$email')";
+        $sql = "insert into users(name,password, email) values ('$username', '$password', '$email')";
         $this->handler->exec($sql);
         return new User ($username, $email);
+    }
+
+    public function createShare(int $user_id,string $title, string $body, string $link) {
+        $sql = "insert into shares(user_id, title,body, link) values ($user_id,$title, $body, $link)";
+        $this->handler->exec($sql);
+        return ;
     }
 }

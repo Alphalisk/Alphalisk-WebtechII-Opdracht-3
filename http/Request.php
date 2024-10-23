@@ -24,6 +24,7 @@ class Request
         foreach ($keys as $k) {
             $tmp[] = $this->post[$k];
         }
+        echo $tmp;
         return $tmp;
     }
 

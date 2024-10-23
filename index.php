@@ -8,7 +8,9 @@ $routes = [
   '/' => controllers\HomeController::class,
   '/register' => controllers\RegisterController::class,
   '/login'=> controllers\LoginController::class,
-  '/share' => controllers\BlogController::class,
+  '/blog' => controllers\BlogController::class,
+  '/share' => controllers\ShareController::class,
+  '/share?' => controllers\ShareController::class,
 ];
 
 $request = new \http\Request($_SERVER, $_POST);

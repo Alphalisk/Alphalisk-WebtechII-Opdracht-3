@@ -5,8 +5,8 @@ namespace models;
 class Blog implements \JsonSerializable
 {
     public function __construct (
-        private String $image,
-        private String $titel,
+        private String $link,
+        private String $title,
         private String $body,
         private String $create_date,
         private String $id
@@ -14,7 +14,7 @@ class Blog implements \JsonSerializable
 
     public function toHtml() {
         $html = file_get_contents('views/blog.partial.html');
-        foreach(['image','body','titel','create_date','id'] as $element) {
+        foreach(['link','body','title','create_date','id'] as $element) {
             $html = str_replace('{{'.$element.'}}', $this->$element, $html);
         }
         return $html;
@@ -23,9 +23,9 @@ class Blog implements \JsonSerializable
     public function jsonSerialize(): mixed
     {
         return [
-            'titel'=>$this->titel,
+            'titel'=>$this->title,
             'body'=>$this->body,
-            'image'=>$this->image,
+            'image'=>$this->link,
             'create_date'=>$this->create_date,
             'id'=>$this->id
         ];
