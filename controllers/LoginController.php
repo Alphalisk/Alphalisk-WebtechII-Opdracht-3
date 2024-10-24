@@ -20,14 +20,19 @@ class LoginController {
             );
 
             if ($user) {
-                print "<h1>Ingelogd</h1>";
-                print "<h2>Welkom $user->username</h2>";
-                print "<p>Emailadres is $user->email</p>";
+                $extra = "";
+                $extra .= "<h1>Ingelogd</h1>";
+                $extra .= "<h2>Welkom $user->username</h2>";
+                $extra .= "<p>Emailadres is $user->email</p>";
             } else {
-                print "<h1>Alles is stuk!</h1>";
+                $extra = '<div class="container-fluid text-center"><h4>De combinatie gebruikersnaam en wachtwoord is onjuist.</h4></div>';
             }
+
+            $login = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . $extra;
+            return $login;
+
         } else {
-            $login = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/login.html');
+            $login = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/login.html');
             return $login;
         }
     }

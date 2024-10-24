@@ -5,7 +5,7 @@ namespace controllers;
 use http\Request;
 use services\DatabaseContext;
 
-class BlogController {
+class BlogModifyController {
 
     public function __construct(
         private readonly Request $request,

@@ -62,4 +62,16 @@ class DatabaseContext {
         $this->handler->exec($sql);
         return ;
     }
+
+    public function deleteShare(int $id) {
+        $sql = "DELETE FROM shares WHERE id='$id';";
+        $this->handler->exec($sql);
+        return ;
+    }
+
+    public function modifyShare(string $user_id,string $title, string $body, string $link) {
+        $sql = "insert into shares(user_id, title,body, link,create_date) values ('$user_id','$title', '$body', '$link',CURRENT_TIMESTAMP)";
+        $this->handler->exec($sql);
+        return ;
+    }
 }

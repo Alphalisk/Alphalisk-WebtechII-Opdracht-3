@@ -11,6 +11,8 @@ $routes = [
   '/blog' => controllers\BlogController::class,
   '/share' => controllers\ShareController::class,
   '/share?' => controllers\ShareController::class,
+  '/delete' => controllers\BlogDeleteController::class,
+  '/modify' => controllers\BlogModifyController::class,
 ];
 
 $request = new \http\Request($_SERVER, $_POST);

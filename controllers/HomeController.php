@@ -15,7 +15,7 @@ class HomeController
     { }
 
     public function handle() {
-        $homepage = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/home.html');
+        $homepage = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/home.html');
         return $homepage;
     }
 }

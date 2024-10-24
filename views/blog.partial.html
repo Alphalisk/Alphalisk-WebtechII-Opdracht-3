@@ -8,6 +8,16 @@
     <div class="card__content">
         <p>{{body}}</p>
         <button style="background-color:rgb(229, 235, 236);"><a href="{{link}}" style="color:black;" class="card__image" alt="brown couch">Go to website</a></button>
+        <form action="/delete" method="POST">
+            <div class="mb-3 mt-3">
+                <button type="submit" class="btn btn-primary" name="delete" value="{{id}}">Delete Post</button>
+            </div> 
+        </form>
+        <form action="/modify" method="POST">
+            <div class="mb-3 mt-3">
+                <button type="submit" class="btn btn-primary">Modify Post</button>
+            </div> 
+        </form>
     </div>
 </div>
 <!-- partial -->

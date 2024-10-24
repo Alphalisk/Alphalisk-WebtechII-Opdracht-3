@@ -22,13 +22,16 @@ class RegisterController
             );
 
             if ($user) {
-                return '<h1>aangemeld hoor</h1>';
+                $status = '<h1>Bijgewerkt hoor</h1>';
             } else {
-                return '<h2>Alles is stuk</h2>';
+                $status = '<h2>Alles is stuk</h2>';
             }
+            $users = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . $status;
+            return $users;
 
         } else {
-            return file_get_contents('views/register.html');
+            $register = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/register.html');
+            return $register;
         }
 
     }
