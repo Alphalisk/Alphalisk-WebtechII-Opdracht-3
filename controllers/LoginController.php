@@ -34,7 +34,10 @@ class LoginController {
                 $extra = '<div class="container-fluid text-center"><h4>De combinatie gebruikersnaam en wachtwoord is onjuist.</h4></div>';
             }
 
-            $login = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html') . $extra;
+            $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+
+            $login = file_get_contents('views/head.partial.html') . $navbar . $extra;
 
             return $login;
 

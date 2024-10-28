@@ -27,7 +27,10 @@ class BlogModifyController {
 
             $this->databaseContext->modifyShare($id, $user_id, $title, $body, $link);
 
-            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html');
+            $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+
+            $modify = file_get_contents('views/head.partial.html') . $navbar;
             return $modify;
 
         } 

@@ -35,7 +35,10 @@ class BlogModifyViewController {
                 $html .= $share[$i]->toHtmlShare();
             }
 
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html') . file_get_contents('views/blogsModify.html'); // + file_get_contents('views/shares.partial.html')
+            $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+
+            $shares = file_get_contents('views/head.partial.html') . $navbar . file_get_contents('views/blogsModify.html'); // + file_get_contents('views/shares.partial.html')
             return str_replace('{{ data }}', $html, $shares);
 
         }

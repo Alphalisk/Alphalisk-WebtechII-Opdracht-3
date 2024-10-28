@@ -31,6 +31,7 @@ class BlogController {
         // Flexibele navbar die anders is wanneer een user is ingelogd.
         if ($this->session->hasSession()) {
             $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
 
             $html = '';
             for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud

@@ -19,10 +19,13 @@ class BlogDeleteController {
 
     public function handle() {
         if ($this->request->getRequestMethod() == 'POST') {
-            
+
             $this->databaseContext->deleteShare($this->request->getPostValue('delete'));
 
-            $delete = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html');
+            $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+
+            $delete = file_get_contents('views/head.partial.html') . $navbar;
             return $delete;
 
         }

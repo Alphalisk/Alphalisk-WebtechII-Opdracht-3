@@ -21,8 +21,9 @@ class HomeController
 
     public function handle() {
         
-        if ($this->session->hasSession()) {
+        if ($this->session->hasSession()) {            
             $navbar = file_get_contents('views/navbar.partial.logged.html');
+            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
         } else {
             $navbar = file_get_contents('views/navbar.partial.html');
         }
