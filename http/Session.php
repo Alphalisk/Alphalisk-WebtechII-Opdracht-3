@@ -6,7 +6,7 @@ class Session
 {
     public function getSession()
     {
-        if (!empty($_SESSION['username']));{
+        if (!empty($_SESSION['username'])) {
             return $_SESSION['username'];
         }
     }

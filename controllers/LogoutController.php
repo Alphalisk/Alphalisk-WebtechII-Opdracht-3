@@ -18,8 +18,11 @@ class LogoutController {
 
     function handle() {
         $this->session->closeSession($this->request->getPostValue('username'));
+        $extra = "  <div class=\"alert alert-success\">
+                        <strong>Succesvol uitgelogd!</strong>
+                    </div>";
 
-        $logout = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/login.html');
+        $logout = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . $extra;
         return $logout;
     }
 

@@ -28,14 +28,17 @@ class LoginController {
 
                 $this->session->setSession($this->request->getPostValue('username'));
 
-                $extra = "";
-                $extra .= "<h1>Ingelogd</h1>";
+                $extra = "  <div class=\"alert alert-success\">
+                                <strong>Succesvol ingelogd!</strong>
+                            </div>";
+                            $navbar = file_get_contents('views/navbar.partial.logged.html');
+                            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
             } else {
-                $extra = '<div class="container-fluid text-center"><h4>De combinatie gebruikersnaam en wachtwoord is onjuist.</h4></div>';
+                $extra = "  <div class=\"alert alert-warning\">
+                                <strong>De combinatie gebruikersnaam en wachtwoord is onjuist.</strong>
+                            </div>";
+                            $navbar = file_get_contents('views/navbar.partial.html');
             }
-
-            $navbar = file_get_contents('views/navbar.partial.logged.html');
-            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
 
             $login = file_get_contents('views/head.partial.html') . $navbar . $extra;
 
