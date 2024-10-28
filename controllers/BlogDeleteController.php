@@ -25,7 +25,11 @@ class BlogDeleteController {
             $navbar = file_get_contents('views/navbar.partial.logged.html');
             $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
 
-            $delete = file_get_contents('views/head.partial.html') . $navbar;
+            $extra = "<div class=\"alert alert-success\">
+                                <strong>De share is succesvol verwijderd.</strong>
+                      </div>";
+
+            $delete = file_get_contents('views/head.partial.html') . $navbar . $extra;
             return $delete;
 
         }

@@ -30,7 +30,11 @@ class BlogModifyController {
             $navbar = file_get_contents('views/navbar.partial.logged.html');
             $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
 
-            $modify = file_get_contents('views/head.partial.html') . $navbar;
+            $extra = "<div class=\"alert alert-success\">
+                                <strong>De share is succesvol gewijzigd.</strong>
+                      </div>";
+
+            $modify = file_get_contents('views/head.partial.html') . $navbar .$extra;
             return $modify;
 
         } 
