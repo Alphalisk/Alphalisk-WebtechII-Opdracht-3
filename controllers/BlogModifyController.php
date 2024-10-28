@@ -9,24 +9,27 @@ class BlogModifyController {
 
     public function __construct(
         private readonly Request $request,
-        private DatabaseContext $ctx)
+        private DatabaseContext $databaseContext)
     { }
 
 
     public function handle() {
-        
-        
-        $blogs = $this->ctx->getBlogs();
+        if ($this->request->getRequestMethod() == 'POST') {
+            $id = $this->request->getPostValue('id');       
+            $title = $this->request->getPostValue('title');
+            $body = $this->request->getPostValue('body');
+            $link = $this->request->getPostValue('link');
+            $user_id = $this->request->getPostValue('user_id');
+            
+            $this->databaseContext->modifyShare($id, $user_id, $title, $body, $link);
 
-        if ($this->request->getPreferredContentType()=='application/json') {
-            return json_encode($blogs);
+            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php');
+            return $modify;
+
+        } else {
+            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/modifyShare.partial.html');
+            return $modify;
         }
 
-        $html = '';
-        for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
-            $html .= $blogs[$i]->toHtml();
-        }
-        $blogs = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/blogs.html');
-        return str_replace('{{ data }}', $html, $blogs);
     }
 }

@@ -1,0 +1,31 @@
+<!-- partial:index.partial.html -->
+<div class="container-sm p-5 my-5 border">
+    <form method="POST" action="/modify">
+        <div class="form">
+            <div class="mb-3 mt-3">
+                Share Title:
+                <input type="text" class="form-control" placeholder="Title of share" name="title" value="{{title}}" required>
+            </div>
+            <div class="mb-3">
+                Body:
+                <textarea class="form-control" rows="5" name="body" placeholder="Write anything about the article." value="{{body}}></textarea>
+            </div>
+            <div class="mb-3 mt-3">
+                Link:
+                <input type="text" class="form-control" placeholder="http://something.nl" name="link" value="{{link}} required>
+            </div>
+            <div class="mb-3 mt-3">
+                <!-- Dit moet later automatisch bij een sessie -->
+                User_id:
+                <input type="number" class="form-control" name="user_id" value="{{user_id}} required>
+            </div>
+            <table>
+                <tr>
+                    <td><button type="submit" class="btn btn-primary" name="id" value="{{id}}">Submit</button></td>
+                    <td><button type="reset" class="btn btn-danger">Cancel</button></td>
+                </tr>
+            </table>    
+        </div> 
+    </form>
+</div>
+<!-- partial -->

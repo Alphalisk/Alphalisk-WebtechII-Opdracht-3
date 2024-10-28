@@ -18,7 +18,9 @@ class ShareController {
 
         if ($this->request->getRequestMethod() == 'POST') {
             
-            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['title', 'body', 'link','user_id']));                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
+            var_dump($this->request->getPostValuesAll(['user_id','title', 'body', 'link']));
+
+            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
         
             if ($share) {
                 $status = '<h1>Bijgewerkt hoor</h1>';

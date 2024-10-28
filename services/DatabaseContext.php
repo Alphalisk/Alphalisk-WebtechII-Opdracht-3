@@ -22,17 +22,18 @@ class DatabaseContext {
     {
         $returnvalue = [];
         $results = $this->handler->query("select * from shares");
+
         while ($row = $results->fetchArray()) {
             $returnvalue[] = new Blog(
-                
-                $row['link'],
-                $row['body'],
-                $row['title'],
-                $row['create_date'],
                 $row['id'],
-                $row['user_id']
-                
+                $row['user_id'],
+                $row['title'],
+                $row['body'],
+                $row['link'],
+                $row['create_date']                
             );
+            
+        
         }
 
         return $returnvalue;
@@ -69,8 +70,8 @@ class DatabaseContext {
         return ;
     }
 
-    public function modifyShare(string $user_id,string $title, string $body, string $link) {
-        $sql = "insert into shares(user_id, title,body, link,create_date) values ('$user_id','$title', '$body', '$link',CURRENT_TIMESTAMP)";
+    public function modifyShare(string $id, string $user_id ,string $title, string $body, string $link) {
+        $sql = "UPDATE shares SET user_id = '$user_id', title = '$title',body = '$body', link = '$link',create_date = CURRENT_TIMESTAMP WHERE id='$id'";
         $this->handler->exec($sql);
         return ;
     }

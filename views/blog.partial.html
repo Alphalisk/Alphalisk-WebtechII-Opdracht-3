@@ -1,23 +1,23 @@
 <!-- partial:index.partial.html -->
 <div class="card">
     <div class="card__content">
-        <h3>Share {{id}}</h3>
-        <time datetime="{{datum}}" class="card__date">{{create_date}}</time>
+        <h3>{{title}}</h3>
         <br>
     </div>
     <div class="card__content">
         <p>{{body}}</p>
-        <button style="background-color:rgb(229, 235, 236);"><a href="{{link}}" style="color:black;" class="card__image" alt="brown couch">Go to website</a></button>
+        <a href="{{link}}"><img src="{{link}}" class="card__image" alt="brown couch"></a>
         <form action="/delete" method="POST">
             <div class="mb-3 mt-3">
                 <button type="submit" class="btn btn-primary" name="delete" value="{{id}}">Delete Post</button>
             </div> 
         </form>
-        <form action="/modify" method="POST">
+        <form action="/modifyView" method="POST">
             <div class="mb-3 mt-3">
-                <button type="submit" class="btn btn-primary">Modify Post</button>
+                <button type="submit" class="btn btn-primary" name="modify" value="{{id}}">Modify Post</button>
             </div> 
         </form>
+        <i>gepost op:<time datetime="{{datum}}" class="card__date">{{create_date}}</time></i>
     </div>
 </div>
 <!-- partial -->
