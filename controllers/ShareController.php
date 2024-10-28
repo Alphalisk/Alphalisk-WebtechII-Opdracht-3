@@ -2,14 +2,18 @@
 
 namespace controllers;
 
+session_start();
+
 use http\Request;
+use http\Session;
 use services\DatabaseContext;
 
 class ShareController {
 
     public function __construct(
         private readonly Request $request,
-        private DatabaseContext $databaseContext)
+        private DatabaseContext $databaseContext,
+        private Session $session)
     { }
 
 

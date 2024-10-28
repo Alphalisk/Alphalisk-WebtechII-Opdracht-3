@@ -2,6 +2,8 @@
 
 namespace controllers;
 
+session_start();
+
 use http\Request;
 use http\Session;
 use services\DatabaseContext;

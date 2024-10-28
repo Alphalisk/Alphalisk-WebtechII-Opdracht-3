@@ -11,6 +11,7 @@ $routes = [
   '/' => controllers\HomeController::class,
   '/register' => controllers\RegisterController::class,
   '/login'=> controllers\LoginController::class,
+  '/logout' => controllers\LogoutController::class,
   '/blog' => controllers\BlogController::class,
   '/share' => controllers\ShareController::class,
   '/share?' => controllers\ShareController::class,

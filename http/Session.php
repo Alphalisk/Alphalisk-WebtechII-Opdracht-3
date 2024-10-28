@@ -19,9 +19,16 @@ class Session
 
     public function hasSession()
     {
-        if (!empty($_SESSION['username']));{
+        if (!empty($_SESSION['username'])) {
             return true;
+        } else {
+            return false;
         }
+    }
+
+    public function closeSession()
+    {
+        session_destroy();
     }
 
 }
