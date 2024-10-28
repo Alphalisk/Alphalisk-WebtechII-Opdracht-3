@@ -22,18 +22,16 @@ class ShareController {
 
         if ($this->request->getRequestMethod() == 'POST') {
 
-            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));//...$this->request->getPostValuesAll(['title', 'body', 'link'])
+            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));
         
-            if ($share) {
-                $status = '<h1>Bijgewerkt hoor</h1>';
-            } else {
-                $status = '<h2>Alles is stuk</h2>';
-            }
+            $extra = "<div class=\"alert alert-success\">
+                            <strong>De share is succesvol aangemaakt.</strong>
+                    </div>";
 
             $navbar = file_get_contents('views/navbar.partial.logged.html');
             $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
 
-            $shares = file_get_contents('views/head.partial.html') . $navbar . $status;
+            $shares = file_get_contents('views/head.partial.html') . $navbar . $extra;
             return $shares;
 
             
@@ -42,7 +40,7 @@ class ShareController {
             $navbar = file_get_contents('views/navbar.partial.logged.html');
             $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
             
-            $shares = file_get_contents('views/head.partial.html') . $navbar . file_get_contents('views/share.partial.html'); // + file_get_contents('views/shares.partial.html')
+            $shares = file_get_contents('views/head.partial.html') . $navbar . file_get_contents('views/share.partial.html');
             return $shares;
         }
     }
