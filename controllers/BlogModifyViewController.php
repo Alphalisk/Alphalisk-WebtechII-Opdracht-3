@@ -5,7 +5,7 @@ namespace controllers;
 use http\Request;
 use services\DatabaseContext;
 
-class ModifyViewController {
+class BlogModifyViewController {
 
     public function __construct(
         private readonly Request $request,
@@ -18,15 +18,28 @@ class ModifyViewController {
 
         if ($this->request->getRequestMethod() == 'POST') {
             
-            $id = $this->request->getPostValue('id');                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
-            $title = $this->request->getPostValue('title'); 
-            $link = $this->request->getPostValue('link'); 
-            $user_id = $this->request->getPostValue('user_id'); 
+            $share = $this->databaseContext->getShare(
+                $this->request->getPostValue('modify')
+            );
 
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/modifyShare.partial.html'); // + file_get_contents('views/shares.partial.html')
-            return $shares;
+            // $id = $share['id'];
+            // $user_id = $share['user_id'];
+            // $title = $share['title'];
+            // $body = $share['body'];
+            // $link = $share['link'];
+            // $create_date = $share['create_date'];
 
-            
+            if ($this->request->getPreferredContentType()=='application/json') {
+                return json_encode($share);
+            }
+
+            $html = '';
+            for ($i = count($share)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
+                $html .= $share[$i]->toHtmlShare();
+            }
+
+            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/blogsModify.html'); // + file_get_contents('views/shares.partial.html')
+            return str_replace('{{ data }}', $html, $shares);
 
         }
     }

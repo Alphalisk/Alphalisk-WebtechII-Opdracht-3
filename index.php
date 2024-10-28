@@ -12,6 +12,7 @@ $routes = [
   '/share' => controllers\ShareController::class,
   '/share?' => controllers\ShareController::class,
   '/delete' => controllers\BlogDeleteController::class,
+  '/modifyView' => controllers\BlogModifyViewController::class,
   '/modify' => controllers\BlogModifyController::class,
 ];
 

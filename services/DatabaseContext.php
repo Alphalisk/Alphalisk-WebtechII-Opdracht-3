@@ -58,6 +58,22 @@ class DatabaseContext {
         return new User ($username, $email);
     }
 
+    public function getShare(string $id) {
+        $result = $this->handler->query("select * from shares where id='$id'");
+        $row = $result->fetchArray();
+
+        $returnvalue[] = new Blog(
+            $row['id'],
+            $row['user_id'],
+            $row['title'],
+            $row['body'],
+            $row['link'],
+            $row['create_date']                
+        );
+
+        return $returnvalue;
+    }
+
     public function createShare(string $user_id,string $title, string $body, string $link) {
         $sql = "insert into shares(user_id, title,body, link,create_date) values ('$user_id','$title', '$body', '$link',CURRENT_TIMESTAMP)";
         $this->handler->exec($sql);
