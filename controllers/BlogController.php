@@ -3,13 +3,15 @@
 namespace controllers;
 
 use http\Request;
+use http\Session;
 use services\DatabaseContext;
 
 class BlogController {
 
     public function __construct(
         private readonly Request $request,
-        private DatabaseContext $ctx)
+        private DatabaseContext $ctx,
+        private Session $session)
     { }
 
 
@@ -26,7 +28,14 @@ class BlogController {
         for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
             $html .= $blogs[$i]->toHtml();
         }
-        $blogs = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/blogs.html');
+
+        if ($this->session->hasSession()) {
+            $navbar = file_get_contents('views/navbar.partial.logged.html');
+        } else {
+            $navbar = file_get_contents('views/navbar.partial.html');
+        }
+
+        $blogs = file_get_contents('views/head.partial.html') . $navbar . file_get_contents('views/blogs.html');
         return str_replace('{{ data }}', $html, $blogs);
     }
 }

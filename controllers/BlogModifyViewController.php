@@ -38,7 +38,7 @@ class BlogModifyViewController {
                 $html .= $share[$i]->toHtmlShare();
             }
 
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/blogsModify.html'); // + file_get_contents('views/shares.partial.html')
+            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/blogsModify.html'); // + file_get_contents('views/shares.partial.html')
             return str_replace('{{ data }}', $html, $shares);
 
         }

@@ -15,19 +15,19 @@ class BlogModifyController {
 
     public function handle() {
         if ($this->request->getRequestMethod() == 'POST') {
-            $id = $this->request->getPostValue('id');       
+            $id = $this->request->getPostValue('id'); 
+            $user_id = $this->request->getPostValue('user_id');      
             $title = $this->request->getPostValue('title');
             $body = $this->request->getPostValue('body');
             $link = $this->request->getPostValue('link');
-            $user_id = $this->request->getPostValue('user_id');
-            
+
             $this->databaseContext->modifyShare($id, $user_id, $title, $body, $link);
 
-            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php');
+            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html');
             return $modify;
 
         } else {
-            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/modifyShare.partial.html');
+            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/modifyShare.partial.html');
             return $modify;
         }
 

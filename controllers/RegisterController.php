@@ -26,11 +26,11 @@ class RegisterController
             } else {
                 $status = '<h2>Alles is stuk</h2>';
             }
-            $users = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . $status;
+            $users = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . $status;
             return $users;
 
         } else {
-            $register = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/register.html');
+            $register = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/register.html');
             return $register;
         }
 

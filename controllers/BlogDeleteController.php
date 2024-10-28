@@ -27,13 +27,9 @@ class BlogDeleteController {
             // } else {
             //     $status = '<h2>Alles is stuk</h2>';
             // }
-            $delete = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php');
+            $delete = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html');
             return $delete;
 
-        } else {
-            $delete = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/home.html');
-            return $delete;
         }
-
     }
 }

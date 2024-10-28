@@ -17,8 +17,6 @@ class ShareController {
         
 
         if ($this->request->getRequestMethod() == 'POST') {
-            
-            var_dump($this->request->getPostValuesAll(['user_id','title', 'body', 'link']));
 
             $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
         
@@ -27,13 +25,13 @@ class ShareController {
             } else {
                 $status = '<h2>Alles is stuk</h2>';
             }
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . $status;
+            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . $status;
             return $shares;
 
             
 
         } else {
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.php') . file_get_contents('views/share.partial.html'); // + file_get_contents('views/shares.partial.html')
+            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/share.partial.html'); // + file_get_contents('views/shares.partial.html')
             return $shares;
         }
     }
