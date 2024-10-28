@@ -22,6 +22,14 @@ class Blog implements \JsonSerializable
         return $html;
     }
 
+    public function toHtmlLogged() {
+        $html = file_get_contents('views/blog.partial.logged.html');
+        foreach(['id','user_id','title','body','link','create_date'] as $element) {
+            $html = str_replace('{{'.$element.'}}', $this->$element, $html);
+        }
+        return $html;
+    }
+
     public function toHtmlShare() {
         $html = file_get_contents('views/modifyShare.partial.html');
         foreach(['id','user_id','title','body','link','create_date'] as $element) {

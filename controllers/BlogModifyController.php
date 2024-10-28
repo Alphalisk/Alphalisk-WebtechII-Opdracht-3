@@ -27,13 +27,9 @@ class BlogModifyController {
 
             $this->databaseContext->modifyShare($id, $user_id, $title, $body, $link);
 
-            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html');
+            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html');
             return $modify;
 
-        } else {
-            $modify = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . file_get_contents('views/modifyShare.partial.html');
-            return $modify;
-        }
-
+        } 
     }
 }

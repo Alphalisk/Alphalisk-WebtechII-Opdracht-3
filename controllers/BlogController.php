@@ -26,18 +26,30 @@ class BlogController {
             return json_encode($blogs);
         }
 
-        $html = '';
-        for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
-            $html .= $blogs[$i]->toHtml();
-        }
+        
 
+        // Flexibele navbar die anders is wanneer een user is ingelogd.
         if ($this->session->hasSession()) {
             $navbar = file_get_contents('views/navbar.partial.logged.html');
+
+            $html = '';
+            for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
+                $html .= $blogs[$i]->toHtmlLogged();
+            }
+
+            $share = file_get_contents('views/blogs.logged.html');
         } else {
             $navbar = file_get_contents('views/navbar.partial.html');
+
+            $html = '';
+            for ($i = count($blogs)-1; $i >= 0  ; $i--) {// Omgedraaide blog van nieuw naar oud
+                $html .= $blogs[$i]->toHtml();
+            }
+
+            $share = file_get_contents('views/blogs.html');
         }
 
-        $blogs = file_get_contents('views/head.partial.html') . $navbar . file_get_contents('views/blogs.html');
+        $blogs = file_get_contents('views/head.partial.html') . $navbar . $share;
         return str_replace('{{ data }}', $html, $blogs);
     }
 }

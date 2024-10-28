@@ -22,14 +22,14 @@ class ShareController {
 
         if ($this->request->getRequestMethod() == 'POST') {
 
-            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));                //...$this->request->getPostValuesAll(['title', 'body', 'link'])
+            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));//...$this->request->getPostValuesAll(['title', 'body', 'link'])
         
             if ($share) {
                 $status = '<h1>Bijgewerkt hoor</h1>';
             } else {
                 $status = '<h2>Alles is stuk</h2>';
             }
-            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.html') . $status;
+            $shares = file_get_contents('views/head.partial.html') . file_get_contents('views/navbar.partial.logged.html') . $status;
             return $shares;
 
             

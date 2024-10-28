@@ -30,8 +30,6 @@ class LoginController {
 
                 $extra = "";
                 $extra .= "<h1>Ingelogd</h1>";
-                $extra .= "<h2>Welkom $user->username</h2>";
-                $extra .= "<p>Emailadres is $user->email</p>";
             } else {
                 $extra = '<div class="container-fluid text-center"><h4>De combinatie gebruikersnaam en wachtwoord is onjuist.</h4></div>';
             }
