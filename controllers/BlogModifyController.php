@@ -19,8 +19,8 @@ class BlogModifyController {
 
     public function handle() {
         if ($this->request->getRequestMethod() == 'POST') {
-            $id = $this->request->getPostValue('id'); 
-            $user_id = $this->request->getPostValue('user_id');      
+            $id = $this->request->getPostValue('id');
+            $user_id = $this->databaseContext->getUserID($_SESSION['username']);     
             $title = $this->request->getPostValue('title');
             $body = $this->request->getPostValue('body');
             $link = $this->request->getPostValue('link');

@@ -22,7 +22,8 @@ class ShareController {
 
         if ($this->request->getRequestMethod() == 'POST') {
 
-            $share = $this->databaseContext->createShare(...$this->request->getPostValuesAll(['user_id','title', 'body', 'link']));
+            $user_id = $this->databaseContext->getUserID($_SESSION['username']);
+            $this->databaseContext->createShare($user_id,...$this->request->getPostValuesAll(['title', 'body', 'link']));
         
             $extra = "<div class=\"alert alert-success\">
                             <strong>De share is succesvol aangemaakt.</strong>

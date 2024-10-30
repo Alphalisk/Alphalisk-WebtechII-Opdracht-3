@@ -9,6 +9,7 @@ include 'includes/class-autoload.inc.php';
 
 $routes = [
   '/' => controllers\HomeController::class,
+  '/index.php' => controllers\HomeController::class,
   '/register' => controllers\RegisterController::class,
   '/login'=> controllers\LoginController::class,
   '/logout' => controllers\LogoutController::class,
