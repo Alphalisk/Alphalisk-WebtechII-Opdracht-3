@@ -47,6 +47,18 @@ class DatabaseContext {
         return $id;
     }
 
+    public function getAllUserNames(): array {
+        $returnvalue = [];
+        $result = $this->handler->query("select * from users");
+        
+        while ($row = $result->fetchArray()) {
+            $returnvalue[] = $row['username'];        
+        }
+        
+
+        return $returnvalue;
+    }
+
     public function getUser(string $username, string $password): ?User {
         $result = $this->handler->query("select * from users where username='$username'");
         $row = $result->fetchArray();

@@ -19,20 +19,32 @@ class LoginController {
 
     function handle() {
        if ($this->request->getRequestMethod() == 'POST') {
-            $user = $this->databaseContext->getUser(
-                $this->request->getPostValue('username'),
-                $this->request->getPostValue('password')
-            );
 
-            if ($user) {
+            $allusers = $this->databaseContext->getAllUserNames();
+            $userExists = in_array($this->request->getPostValue('username'), $allusers, $strict = false);
+            
+            if ($userExists) {
+                $user = $this->databaseContext->getUser(
+                    $this->request->getPostValue('username'),
+                    $this->request->getPostValue('password')
+                );
 
-                $this->session->setSession($this->request->getPostValue('username'));
+                if ($user) {
 
-                $extra = "  <div class=\"alert alert-success\">
-                                <strong>Succesvol ingelogd!</strong>
-                            </div>";
-                            $navbar = file_get_contents('views/navbar.partial.logged.html');
-                            $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+                    $this->session->setSession($this->request->getPostValue('username'));
+    
+                    $extra = "  <div class=\"alert alert-success\">
+                                    <strong>Succesvol ingelogd!</strong>
+                                </div>";
+                                $navbar = file_get_contents('views/navbar.partial.logged.html');
+                                $navbar = str_replace('{{user}}', $this->session->getSession(), $navbar);
+                } else {
+                    $extra = "  <div class=\"alert alert-warning\">
+                                    <strong>De combinatie gebruikersnaam en wachtwoord is onjuist.</strong>
+                                </div>";
+                                $navbar = file_get_contents('views/navbar.partial.html');
+                }
+                
             } else {
                 $extra = "  <div class=\"alert alert-warning\">
                                 <strong>De combinatie gebruikersnaam en wachtwoord is onjuist.</strong>

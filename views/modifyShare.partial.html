@@ -3,21 +3,21 @@
     <form method="POST" action="/modify">
         <div class="form">
             <div class="mb-3 mt-3">
-                Share Title:
-                <input type="text" class="form-control" placeholder="Title of share" name="title" value="{{title}}" required>
+                Titel van Share:
+                <input type="text" class="form-control" placeholder="De titel van de Share." name="title" value="{{title}}" required>
             </div>
             <div class="mb-3">
-                Body:
-                <textarea class="form-control" rows="5" name="body" placeholder="{{body}}" value="{{body}}" required></textarea>
+                Inhoud:
+                <textarea class="form-control" rows="5" name="body" placeholder="Schrijf wat beschrijvende tekst voor bij de Share." value="{{body}}" required>{{body}}</textarea>
             </div>
             <div class="mb-3 mt-3">
-                Link:
-                <input type="text" class="form-control" placeholder="http://something.nl" name="link" value="{{link}}" required>
+                Link naar afbeelding:
+                <input type="text" class="form-control" placeholder="Vul de web-link naar een afbeelding op een website in." name="link" value="{{link}}" required>
             </div>
             <table>
                 <tr>
-                    <td><button type="submit" class="btn btn-primary" name="id" value="{{id}}">Submit</button></td>
-                    <td><button type="reset" class="btn btn-danger">Cancel</button></td>
+                    <td><button type="submit" class="btn btn-primary" name="id" value="{{id}}">Wijzig de share</button></td>
+                    <td><button type="reset" class="btn btn-danger">Reset formulier</button></td>
                 </tr>
             </table>    
         </div> 
